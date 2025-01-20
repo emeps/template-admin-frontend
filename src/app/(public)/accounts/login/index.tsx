@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -9,14 +10,15 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-
-import {googleSvg} from "@/assets/svg";
 import Link from "next/link";
+import { redirectToRegister } from "@/constants/links";
+import { GoogleLogin } from '@/components/GoogleLogin';
+import { Separator } from '@/components/Separator';
 
 export function LoginForm({
-                              className,
-                              ...props
-                          }: React.ComponentPropsWithoutRef<"div">) {
+    className,
+    ...props
+}: React.ComponentPropsWithoutRef<"div">) {
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card>
@@ -37,7 +39,6 @@ export function LoginForm({
                                     placeholder="me@exemplo.com"
                                 />
                             </div>
-
                             <div className="grid gap-2">
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Senha</Label>
@@ -48,19 +49,17 @@ export function LoginForm({
                                         Esqueceu sua senha?
                                     </a>
                                 </div>
-                                <Input id="password" type="password" placeholder={"****************"} />
+                                <Input id="password" type="password" placeholder={'****************'} />
                             </div>
                             <Button type="submit" className="w-full">
                                 Entrar
                             </Button>
-                            <Button variant="outline" className="w-full">
-                                {googleSvg}
-                                Entrar com Google
-                            </Button>
+                            <Separator text="Ou continue com"/>
+                            <GoogleLogin/>
                         </div>
                         <div className="mt-4 text-center text-sm">
-                            Não tem conta?{" "}
-                            <Link href="/register" className="underline underline-offset-4">
+                            Não tem conta?{' '}
+                            <Link href={redirectToRegister} className="underline underline-offset-4">
                                 Registrar-se
                             </Link>
                         </div>

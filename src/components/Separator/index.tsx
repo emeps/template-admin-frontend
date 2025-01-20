@@ -1,4 +1,4 @@
-export const SeparatorWithText = (
+export const Separator = (
   { children, text }: Readonly<{ children?: React.ReactNode, text?:string }>,
 
 ) => {
