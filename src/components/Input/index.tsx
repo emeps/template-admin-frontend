@@ -10,6 +10,7 @@ type InputType = {
   placeholder: string;
   className?: string;
   labelText: string;
+  name:string;
 };
 
 export const Input = ({
@@ -19,6 +20,7 @@ export const Input = ({
   placeholder,
   labelText,
   children,
+  name,
 }: InputType & { children?: React.ReactNode }) => {
   return (
     <BoxInput>
@@ -28,9 +30,9 @@ export const Input = ({
           {children}
         </div>
       ) : (
-        <Label htmlFor={htmlFor}>{labelText}</Label>
+        <Label htmlFor={htmlFor} >{labelText}</Label>
       )}
-      <InputComponent id={id} type={type} placeholder={placeholder} />
+      <InputComponent id={id} type={type} placeholder={placeholder} name={name} />
     </BoxInput>
   );
 };
